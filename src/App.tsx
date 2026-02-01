@@ -1,19 +1,21 @@
-import { Button } from 'antd'
+import { Layout } from 'antd'
 import './App.css'
 import { Outlet } from 'react-router'
+import { Content, Header } from 'antd/es/layout/layout'
 
 function App() {
 
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-      <div>
-        <Button type="primary">Button</Button>
-      </div>
-      <Outlet />
-    </>
+    <Layout className='h-full'>
+      <Header>
+        <div className="logo" />
+
+      </Header>
+      <Content className='pt-4 pb-4 px-10'>
+        <Outlet />
+      </Content>
+    </Layout>
+    
   )
 }
 
