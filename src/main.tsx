@@ -4,24 +4,28 @@ import './index.css'
 
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
-import Home from './assets/pages/Home/Home.tsx';
-import Timestamp from './assets/pages/Timestamp/Timestamp.tsx';
-import JsonPage from './assets/pages/JsonPage/JsonPage.tsx';
+import Home from './pages/Home/Home.tsx';
+import Timestamp from './pages/Timestamp/Timestamp.tsx';
+import JsonPage from './pages/JsonPage/JsonPage.tsx';
 import App from './App.tsx';
+import { PagesPath } from './consts/pages-path.ts';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [{
-      index: true,
+      path: PagesPath.home,
       element: <Home />,
+      id: 'home',
     }, {
-      path: "timestamp",
+      path: PagesPath.timestamp,
       element: <Timestamp />,
+      id: 'timestamp'
     }, {
-      path: "json",
+      path: PagesPath.json,
       element: <JsonPage />,
+      id: 'json'
     }]
   },
 ]);
