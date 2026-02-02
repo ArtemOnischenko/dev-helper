@@ -1,20 +1,15 @@
 import { Menu } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { NavLink } from "react-router";
-import { PagesPath } from "../../consts/pages-path";
-import { useEffect, useState } from "react";
+import { PagesPath, PathToMenuKey } from "../../consts/pages-path";
+import { useState } from "react";
 import { useLocation } from "react-router";
 
 export default function AppHeader() {
-    const [current, setCurrent] = useState<string>(PagesPath.home);
-    const location = useLocation().pathname;
-    
-    useEffect(() => {
-        console.log(location);
-    }, []);
+    const [current, setCurrent] = useState<string>(PathToMenuKey[useLocation().pathname]);
 
-    const onClick = (e: any) => {
-        setCurrent(e.key);
+    const onClick = ({key}: {key: string}) => {
+        setCurrent(key);
     };
     return (
         <Header className='flex'>
