@@ -4,6 +4,7 @@ import { NavLink } from "react-router";
 import { PagesPath, PathToMenuKey } from "../../consts/pages-path";
 import { useState } from "react";
 import { useLocation } from "react-router";
+import CurrentTime from "../CurrentTime/CurrentTime";
 
 export default function AppHeader() {
     const [current, setCurrent] = useState<string>(PathToMenuKey[useLocation().pathname]);
@@ -19,7 +20,7 @@ export default function AppHeader() {
               <Menu.Item key="timestamp"><NavLink to={PagesPath.timestamp}>Timestamp</NavLink></Menu.Item>
               <Menu.Item key="json"><NavLink to={PagesPath.json}>JSON Formatter</NavLink></Menu.Item>
             </Menu>
-
+            {current === "timestamp" && <CurrentTime />}
         </Header>
     )
 };

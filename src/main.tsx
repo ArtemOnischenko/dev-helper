@@ -4,8 +4,8 @@ import './index.css'
 
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
-import Home from './pages/Home/Home.tsx';
-import Timestamp from './pages/Timestamp/Timestamp.tsx';
+import HomePage from './pages/HomePage/HomePage.tsx';
+import TimestampPage from './pages/TimestampPage/TimestampPage.tsx';
 import JsonPage from './pages/JsonPage/JsonPage.tsx';
 import App from './App.tsx';
 import { PagesPath } from './consts/pages-path.ts';
@@ -16,11 +16,11 @@ const router = createBrowserRouter([
     element: <App />,
     children: [{
       path: PagesPath.home,
-      element: <Home />,
+      element: <HomePage />,
       id: 'home',
     }, {
       path: PagesPath.timestamp,
-      element: <Timestamp />,
+      element: <TimestampPage />,
       id: 'timestamp'
     }, {
       path: PagesPath.json,
