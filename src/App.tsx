@@ -8,7 +8,7 @@ function App() {
   return (
     <Layout className='h-full'>
       <AppHeader />
-      <Content className='pt-4 pb-4 px-10'>
+      <Content className='pt-4 pb-4 px-10 flex justify-center'>
         <Outlet />
       </Content>
     </Layout>
