@@ -1,12 +1,13 @@
-import moment, { type Moment } from "moment-timezone"
+import type { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 
 export default function CurrentTime() {
-    const [time, setTime] = useState<Moment>(moment());
+    const [time, setTime] = useState<Dayjs>(dayjs());
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setTime(moment());
+            setTime(dayjs());
         }, 1000);
         return () => clearInterval(timer);
     }, []);
