@@ -1,7 +1,8 @@
-import { DatePicker, Form, Input, InputNumber, Select } from "antd";
-import type { Rule } from "antd/es/form";
+import { DatePicker, Form, InputNumber, Select } from "antd";
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
+import { numberRule, requiredRule } from "../../../../consts/formValidationRules";
+import { isFormValid } from "../../../../utils/form.utils";
 
 interface FormOptions {
     label: string;
@@ -12,14 +13,8 @@ const dateTypeInputs: FormOptions[] = [
     { label: 'Date Time Picker', value: "dateTimePicker" },
 ]
 
-const numberRule: Rule = { type: "number", message: "Value must be a number" };
-const requiredRule: Rule = { required: true, message: "This field is required" };
-
 export default function TimestampPageForm({date, onDateChange}: {date: Dayjs, onDateChange: any}) {
     const [form] = Form.useForm();
-    const isFormValid = () => {
-        return !form.getFieldsError().some(({ errors }) => errors.length);
-    }
     const onDatePickerChange = (newDate: Dayjs | null) => {
         if (newDate) {
             onDateChange(newDate);
@@ -27,7 +22,7 @@ export default function TimestampPageForm({date, onDateChange}: {date: Dayjs, on
         }
     }
     const onTimestampChanged = () => {
-        if(isFormValid()) {
+        if(isFormValid(form)) {
             const newDate: Dayjs = dayjs.unix(form.getFieldValue("timestamp"));
             if(newDate.isValid()) {
                 form.setFieldValue("dateTime", newDate);
